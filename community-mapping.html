@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Mapping: Issues Affected by Physical Geography in India</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 70%;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 30%;
+            padding: 20px;
+            background-color: #f4f4f4;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        h1, h2 {
+            text-align: left; /* Align headings to the left */
+            margin-top: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-bottom: 20px;
+            color: #333; /* Set text color */
+        }
+        .issue {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .flood {
+            color: blue;
+        }
+        .landslide {
+            color: red;
+        }
+        .pollution {
+            color: green;
+        }
+        .drought {
+            color: rgb(10, 10, 10);
+        }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h1>Community Mapping</h1>
+    <p class="description">
+        Community mapping is the process of creating a visual representation (usually a map) of a community’s physical and social resources, challenges, and opportunities. It involves gathering data about a specific area (like a neighborhood, town, or region) and displaying it spatially to better understand how different factors (geography, infrastructure, demographics, and environment) interact within that space.
+    </p>
+    <h2>Places with Physical Geography Issues</h2>
+    <div class="issue flood">
+        <strong>Water Pollution in Yamuna River</strong><br>
+        The Yamuna River faces severe water pollution due to industrial waste. <a href="https://www.google.com/search?q=Yamuna+water+pollution" target="_blank">Read more</a>
+    </div>
+    <div class="issue landslide">
+        <strong>Landslide in Uttarakhand</strong><br>
+        Frequent landslides in Uttarakhand have caused significant disruption and damage. <a href="https://www.google.com/search?q=Uttarakhand+landslide" target="_blank">Read more</a>
+    </div>
+    <div class="issue flood">
+        <strong>Floods in Kerala</strong><br>
+        Kerala experiences annual floods, severely impacting communities and infrastructure. <a href="https://www.google.com/search?q=Kerala+flood" target="_blank">Read more</a>
+    </div>
+    <div class="issue drought">
+        <strong>Drought in Maharashtra</strong><br>
+        Maharashtra faces severe drought conditions affecting agriculture and water supply. <a href="https://www.google.com/search?q=Maharashtra+drought" target="_blank">Read more</a>
+    </div>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([20.5937, 78.9629], 5); // Center of India
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Function to create colored markers
+    function createColoredMarker(lat, lng, color, title, description, link) {
+        var circleMarker = L.circleMarker([lat, lng], {
+            radius: 8,
+            fillColor: color,
+            color: color,
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map).bindPopup(`<b>${title}</b><br>${description} <a href="${link}" target="_blank">Read more</a>`);
+        return circleMarker;
+    }
+
+    // Add markers to the map with colors
+    createColoredMarker(10.8505, 76.2711, 'blue', 'Flood in Kerala', 'Kerala faces severe flooding every monsoon.', 'https://www.google.com/search?q=Kerala+floods');
+    createColoredMarker(30.0668, 79.0193, 'red', 'Landslide in Uttarakhand', 'Frequent landslides disrupt communities.', 'https://www.google.com/search?q=Uttarakhand+landslide');
+    createColoredMarker(28.6139, 77.2090, 'green', 'Water Pollution in Yamuna River', 'The Yamuna River faces severe pollution due to industrial waste.', 'https://www.google.com/search?q=Yamuna+water+pollution');
+    createColoredMarker(19.9633, 75.3216, 'orange', 'Drought in Maharashtra', 'Maharashtra faces severe drought conditions affecting agriculture.', 'https://www.google.com/search?q=Maharashtra+drought');
+
+    // Additional markers can be added similarly
+</script>
+
+</body>
+</html>

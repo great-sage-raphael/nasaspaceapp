@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Mapping Landing Page</title>
+    <style>
+        /* Full page style */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: libre 'lato', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+    
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to top */
+            align-items: flex-start; /* Align items to the left */
+            background: linear-gradient(45deg, #000000, #f8f9fa); 
+            height: 100vh;
+            text-align: left; /* Left align the text */
+            color: white;
+            padding: 0 20px;
+        }
+
+        
+        .background-image {
+            width: 100%;
+            height: 90vh; /* Height set to 80% of the viewport */
+            background: url('https://guidetocamden.wordpress.com/wp-content/uploads/2014/03/map5-2.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            align-items: center;
+            z-index: -1; /* Set background behind content */
+        }
+
+        
+        .overlay-text {
+            position: absolute;
+            top: 20%; /* Position the heading at the top of the image */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add shadow for text visibility */
+            z-index: 1;
+        }
+
+        .overlay-text h1 {
+            font-size: 4em;
+            margin: 0;
+            color: #ffffff;
+        }
+
+    
+        .container p {
+            font-size: 1.2em;
+            margin-top: 60px;
+            max-width: 600px;
+            opacity: 0; /* Initially hidden */
+            transform: translateX(-50px); /* Slide in from the left */
+            animation: fadeInLeft 1.5s forwards; 
+        }
+
+        
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0); /* Slide to normal position */
+            }
+        }
+
+        
+        .enter-btn {
+            padding: 15px 30px;
+            background-color: green;
+            color: rgb(7, 7, 7);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 50px; /* Add margin for spacing */
+        }
+
+        .enter-btn:hover {
+            background-color: #45a049; /* Hover effect */
+        }
+
+        
+        .scroll {
+            position: relative;
+            bottom: -30px; 
+            font-size: 1em;
+            color: #fff;
+            animation: bounce 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="background-image">
+        <div class="overlay-text">
+            <h1>COMMUNITY MAPPING</h1>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <p style="color:rgb(249, 246, 246); font-size: 20px;">
+            Community mapping is the process of creating a visual representation (usually a map) of a community’s physical and social resources, challenges, and opportunities.It involves gathering data about a specific area (like a neighborhood, town, or region) and displaying it spatially to    
+            better understand how different factors (geography, infrastructure, demographics, environment) interact within that space.Empowerment: Community mapping can engage local residents in better understanding their own community and advocating for change. It makes information    
+            more accessible and highlights key areas of need.  
+            *GIS (Geographic Information System) is a tool for creating, managing, analyzing, and mapping all kinds of spatial data. 
+            *It allows us to layer various data sources on maps for enhanced insight.
+            *With GIS technology, people can compare the locations of different things in order to discover how they relate to each other.  
+            *For example, using GIS, a single map could include sites that produce pollution, such as factories, and sites that are sensitive to pollution, such as wetlands and rivers.   
+            *Such a map would help people determine where water supplies are most at risk
+        
+        </p>
+
+        
+        <button class="enter-btn" onclick="enterMapping()">Enter</button>
+    </div>
+
+    
+    <div class="scroll">Scroll down to enter</div>
+
+    
+    <script>
+        function enterMapping() {
+            window.location.href = "community-mapping.html"; // Redirects to the community mapping page
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
