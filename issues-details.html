@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Mapping - Issue Details</title>
+    <style>
+        body, html {
+            font-family: 'Lato', 'Arial Narrow', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .issue-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .issue-container h3 {
+            color: #007bff;
+        }
+
+        .issue-container p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Community Mapping - Issue Details</h1>
+    <div id="issue-details" class="issue-container"></div>
+
+    <script>
+        // Fetch the issues from local storage and display them
+        const issues = JSON.parse(localStorage.getItem('communityIssues')) || [];
+
+        const issueDetails = document.getElementById('issue-details');
+        if (issues.length > 0) {
+            issues.forEach((issue, index) => {
+                issueDetails.innerHTML += `
+                    <h3>Issue #${index + 1}: ${issue.title}</h3>
+                    <p>${issue.description}</p>
+                    <hr>
+                `;
+            });
+        } else {
+            issueDetails.innerHTML = "<p>No issues have been reported yet.</p>";
+        }
+    </script>
+
+</body>
+</html>

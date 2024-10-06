@@ -5,44 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Mapping Landing Page</title>
     <style>
-        /* Full page style */
         body, html {
             height: 100%;
             margin: 0;
             font-family: 'Lato', 'Arial Narrow', Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            background-color: #f8f9fa;
         }
 
-        /* Container for the landing page */
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content to top */
-            align-items: flex-start; /* Align items to the left */
-            background: linear-gradient(45deg, #000000, #f8f9fa); 
-            height: 100vh;
-            text-align: left; /* Left align the text */
+            justify-content: flex-start;
+            align-items: center;
+            background: linear-gradient(45deg, #000000, #f8f9fa);
+            min-height: 100vh;
+            text-align: center;
             color: white;
-            padding: 0 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Background Image */
         .background-image {
             width: 100%;
-            height: 100vh; /* Height set to 100% of the viewport */
+            height: 100vh;
             background: url('https://guidetocamden.wordpress.com/wp-content/uploads/2014/03/map5-2.jpg') no-repeat center center;
-            background-size: cover; /* Ensure the image covers the entire page */
-            position: relative;
+            background-size: cover;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 0;
         }
 
-        /* Overlay text for the map */
         .overlay-text {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add shadow for text visibility */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             z-index: 1;
         }
 
@@ -52,47 +51,42 @@
             color: #ffffff;
         }
 
-        /* Styling for the explanation paragraph */
         .container section {
             font-size: 1.2em;
-            margin-top: 60px;
+            margin-top: 30px;
             max-width: 600px;
             border-radius: 10px;
             padding: 20px;
-            opacity: 0; /* Initially hidden */
-            transform: translateX(-50px); /* Slide in from the left */
-            animation: fadeInLeft 1.5s forwards; 
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent background for better readability */
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInLeft 1.5s forwards;
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         @keyframes fadeInLeft {
             to {
                 opacity: 1;
-                transform: translateX(0); /* Slide to normal position */
+                transform: translateX(0);
             }
         }
 
-        /* Enter button */
         .enter-btn {
-            padding: 20px;
+            padding: 15px 30px;
             background-color: green;
-            color: rgb(7, 7, 7);
+            color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.5em;
+            font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-top: 50px; /* Add margin for spacing */
+            margin: 20px 0;
         }
 
         .enter-btn:hover {
-            background-color: #3ea844; /* Hover effect */
+            background-color: #3ea844;
         }
 
-        /* Scroll animation */
         .scroll {
-            position: relative;
-            bottom: -30px; 
             font-size: 1em;
             color: #fff;
             animation: bounce 3s infinite;
@@ -110,46 +104,167 @@
             }
         }
 
-        /* Styling for the background image */
-        #comm {
-            background-size: cover;
+        .issue-box {
+            margin-top: 30px;
+            padding: 20px;
+            color: #000;
+            border-radius: 20px;
+            max-width: 800px;
+            backdrop-filter: blur(8px); /* Adjust blur intensity */
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .issue-box input, .issue-box textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .issue-box button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .issue-box button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+        }
+
+        nav .gcse-search {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-group a {
+            text-decoration: none;
+        }
+
+        .btn-group button {
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius:10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-group button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .overlay-text h1 {
+                font-size: 2.5em;
+            }
+
+            .container section {
+                margin-top: 15px;
+                padding: 15px;
+            }
+
+            .enter-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .issue-box button {
+                padding: 8px 15px;
+                font-size: 1em;
+            }
+
+            .btn-group button {
+                padding: 10px 15px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Image Container -->
+    <nav>
+        <div class="gcse-search">
+            <textarea name="search" id="gcse-search" cols="30" rows="10"></textarea>
+        </div>
+    </nav>
+
     <div class="background-image" id="comm">
         <div class="overlay-text">
             <h1>COMMUNITY MAPPING</h1>
         </div>
     </div>
 
-    <!-- Main Content Container -->
     <div class="container">
-        <section style="color:rgb(249, 246, 246); font-size: 20px;">
-            Community mapping is the process of creating a visual representation (usually a map) of a community’s physical and social resources, challenges, and opportunities.It involves gathering data about a specific area (like a neighborhood, town, or region) and displaying it spatially to    
-            better understand how different factors (geography, infrastructure, demographics, environment) interact within that space.Empowerment: Community mapping can engage local residents in better understanding their own community and advocating for change. It makes information    
-            more accessible and highlights key areas of need.  
-            *GIS (Geographic Information System) is a tool for creating, managing, analyzing, and mapping all kinds of spatial data. 
-            *It allows us to layer various data sources on maps for enhanced insight.
-            *With GIS technology, people can compare the locations of different things in order to discover how they relate to each other.  
-            *For example, using GIS, a single map could include sites that produce pollution, such as factories, and sites that are sensitive to pollution, such as wetlands and rivers.   
-            *Such a map would help people determine where water supplies are most at risk.
+        <section>
+            Community mapping is the process of creating a visual representation (usually a map) of a community’s physical and social resources, challenges, and opportunities. It involves gathering data about a specific area and displaying it spatially to better understand various interactions.
         </section>
 
-        <!-- Enter Button -->
-        <button class="enter-btn" onclick="enterMapping()">Enter</button>
+        <div class="issue-box">
+            <h3>Report an Issue in Your Community</h3>
+            <input type="text" id="issue-title" placeholder="Issue Title">
+            <textarea id="issue-description" rows="4" placeholder="Describe the issue"></textarea>
+            <button onclick="submitIssue()">Submit Issue</button>
+        </div>
+
+        <button class="enter-btn" onclick="enterMapping()">Enter Mapping</button>
+
+        <div class="scroll">Scroll down to explore</div>
+
+        <div class="btn-group">
+            <a href="read-more.html">
+                <button>Read More</button>
+            </a>
+            <a href="issues-details.html">
+                <button>Registered Issues</button>
+            </a>
+        </div>
     </div>
 
-    <!-- Scroll Prompt -->
-    <div class="scroll">Scroll down to enter</div>
-
     <script>
+        function submitIssue() {
+            const title = document.getElementById('issue-title').value;
+            const description = document.getElementById('issue-description').value;
+
+            if (title && description) {
+                let issues = JSON.parse(localStorage.getItem('communityIssues')) || [];
+                issues.push({ title: title, description: description });
+                localStorage.setItem('communityIssues', JSON.stringify(issues));
+
+                alert("Your issue has been submitted!");
+                document.getElementById('issue-title').value = '';
+                document.getElementById('issue-description').value = '';
+            } else {
+                alert("Please fill in both fields before submitting.");
+            }
+        }
+
         function enterMapping() {
-            window.location.href = "community-mapping.html"; // Redirects to the community mapping page
+            window.location.href = "community-mapping.html";
         }
     </script>
 
+    <script async src="https://cse.google.com/cse.js?cx=405f6c94c3a7d4a52"></script>
 </body>
 </html>
